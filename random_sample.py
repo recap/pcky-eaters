@@ -8,10 +8,7 @@ circle_crumb = 0
 circle_crust = 0
 px = []
 py = []
-cx1 = []
-cy1 = []
-cx2 = []
-cy2 = []
+
 for i in range(1,1000000):
     x = np.random.random_sample()
     y = np.random.random_sample()
