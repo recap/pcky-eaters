@@ -20,44 +20,29 @@ for i in range(1,1000000):
     max_c = max(x,y)
     dist_to_crust = 1 - max_c
     dist_to_center = np.sqrt( np.square(x) + np.square(y))
-    #in_circle = np.square(x) + np.square(y)
-
-    #if(in_circle <= 1):
-    #    if(dist_to_center <= 0.5):	
-    #       circle_crumb = circle_crumb + 1
-    #       cx2.append(x)
-    #       cy2.append(y)
-    #    else:
-    #       circle_crust = circle_crust + 1
-    #       cx1.append(x)
-    #       cy1.append(y)
 
 
     if(dist_to_crust <= dist_to_center):
+	# sample in crust
         crust = crust+1
-#    print("CRUST")
     else:
+	# sample in crumb
         crumb = crumb+1
+	# add point for plotting
         px.append(x)
         py.append(y)
-#    print("CRUMB")
+
+# results
+total = crumb+crust
+per = (crumb/total) * 100
 
 print("crumb: "+str(crumb))
 print("crust: "+str(crust))
-total = crumb+crust
-
-per = (crumb/total) * 100
-
-#total_circle = circle_crust+circle_crumb
-#per = (circle_crumb/total_circle) * 100
-
 print("answer: "+str(per))
 
+# plot
 plt.ylim(0, 1)
 plt.xlim(0, 1)
 plt.scatter(px,py)
-#plt.scatter(cx1,cy1,c="red")
-#plt.scatter(cx2,cy2,c="blue")
-
 
 plt.show()
